@@ -1,3 +1,4 @@
-const print = require('./utils');
+const util = require('./utils');
 
-print('Hello');
+util.print('Hello');
+util.print('Good morning');

@@ -2,4 +2,11 @@ function print(text) {
     console.log(">>> " + text);
 }
 
-module.exports = print;
+function printTwo(text) {
+    console.log(">>> " + text);
+}
+
+module.exports = {
+    print,
+    printTwo
+};
