@@ -1,9 +1,18 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    console.log('request recieved');
-    res.write('Hello world');
-    res.end();
+    console.log('>>>', req.method, req.url);
+
+    const url = new URL(req.url, `http://${req.headers.host}`);
+
+    if (url.pathname == '/') {
+        res.write('Home page');
+        res.end();
+    } else if (url.pathname == '/about') {
+        res.write('About page');
+        res.end();
+    }
+
 })
 
 server.listen(3000);
