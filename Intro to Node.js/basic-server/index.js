@@ -11,6 +11,10 @@ const server = http.createServer((req, res) => {
     } else if (url.pathname == '/about') {
         res.write('About page');
         res.end();
+    }else{
+        res.statusCode = 404;
+        res.write('Not Found');
+        res.end();
     }
 
 })
