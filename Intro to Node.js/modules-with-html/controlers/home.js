@@ -1,4 +1,5 @@
-const {layout, data} = require('../util');
+const formidable = require('formidable');
+const { layout, data } = require('../util');
 
 const homePage = `
     <h1>Home</h1>
@@ -34,12 +35,19 @@ function aboutControler(req, res) {
     res.end();
 }
 
-function createControler(req, res){
+function createControler(req, res) {
     console.log('create request');
-    res.writeHead(301, {
-        'Location': '/about'
+
+    const form = new formidable.IncomingForm();
+    form.parse(req, (err, fields) => {
+        console.log(fields);
+        res.writeHead(301, {
+            'Location': '/about'
+        });
+        res.end();
     });
-    res.end();
+
+
 }
 
 module.exports = {
