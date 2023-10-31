@@ -19,4 +19,17 @@ function layout(body, title = 'Hello'){
     `
 }
 
-module.exports = layout;
+const data = [
+    {
+        name: "Test",
+        contact: "1234"
+    },
+    {
+        name: "Test1",
+        contact: "123422222"
+    },
+];
+module.exports = {
+    layout,
+    data
+};

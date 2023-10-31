@@ -1,4 +1,4 @@
-const layout = require('../util');
+const {layout, data} = require('../util');
 
 const homePage = `
     <h1>Home</h1>
@@ -7,7 +7,9 @@ const homePage = `
 
 const aboutPage = `
 <h1>About</h1>
-<p>About Us</p>
+<ul>
+${data.map(x => `<li>${x.name} - ${x.contact}`).join('\n')}
+</ul>
 `;
 
 function homeControler(req, res) {
