@@ -11,7 +11,7 @@ function main(req, res){
     const url = new URL(req.url, `http://${req.headers.host}`);
 
     let handler;
-    const actions = routes[url.pathname][req.method];
+    const actions = routes[url.pathname];
 
     if(actions){
         handler = actions[req.method];
