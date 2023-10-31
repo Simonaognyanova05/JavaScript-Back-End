@@ -2,23 +2,17 @@ const http = require('http');
 
 
 const homePage = `
-<!DOCTYPE html>
-<html lang="en">
-<body>
     <h1>Home</h1>
     <p>Hello World</p>
-</body>
-</html>
 `;
 
 const aboutPage = `
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <h1>About Us</h1>
-    <p color="white">Contacts</p>
-</body>
-</html>
+<h1>About</h1>
+<p>Abput Us</p>
+`;
+
+const defaultPage = `
+<h1>Not Found</h1>
 `;
 
 const server = http.createServer((req, res) => {
@@ -27,17 +21,43 @@ const server = http.createServer((req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
 
     if (url.pathname == '/') {
-        res.write(homePage);
-        res.end();
+        homeControler(req, res);
     } else if (url.pathname == '/about') {
-        res.write(aboutPage);
-        res.end();
+        aboutControler(req, res);
     } else {
-        res.statusCode = 404;
-        res.write('Not Found');
-        res.end();
+        defaultControler(req, res)
     }
 
 })
 
 server.listen(3000);
+
+const homeControler = (req, res) => {
+    res.write(layout(homePage));
+    res.end();
+}
+
+const aboutControler = (req, res) => {
+    res.write(layout(aboutPage));
+    res.end();
+}
+
+const defaultControler = (req, res) => {
+    res.statusCode = 404;
+    res.write(layout(defaultPage));
+    res.end();
+}
+
+const layout = (body, title='Hello') => {
+    return `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<title>${title}</title>
+</head>
+<body>
+    ${body}
+</body>
+</html>
+    `
+}
