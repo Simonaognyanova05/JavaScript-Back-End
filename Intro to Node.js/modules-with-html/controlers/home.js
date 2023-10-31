@@ -6,7 +6,7 @@ const homePage = `
     <p>Hello World</p>
 `;
 
-const aboutPage = `
+const aboutPage = (data) => `
 <h1>About</h1>
 <form method="POST" action="/add">
    <label>Name: <input type="text" name="name"></label>
@@ -31,7 +31,7 @@ function homeControler(req, res) {
 }
 
 function aboutControler(req, res) {
-    res.write(layout(aboutPage));
+    res.write(layout(aboutPage(data)));
     res.end();
 }
 
@@ -41,6 +41,13 @@ function createControler(req, res) {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields) => {
         console.log(fields);
+
+        const item = {
+            name: fields.name,
+            contact: fields.contact
+        }
+
+        data.push(item);
         res.writeHead(301, {
             'Location': '/about'
         });
