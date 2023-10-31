@@ -10,7 +10,7 @@ function main(req, res){
     console.log('>>>', req.method, req.url);
     const url = new URL(req.url, `http://${req.headers.host}`);
 
-    const handler = match(url);
+    const handler = routes[url.pathname];
 
     if(typeof handler == 'function'){
         handler(req, res);
@@ -19,9 +19,9 @@ function main(req, res){
         defaultControler(req, res);
     }
 }
-function match(url) {
-    const handler = routes[url.pathname];
-    return handler;
+
+function register(pathname, handler){
+    routes[pathname] = handler;
 }
 
 function defaultControler (req, res) {
@@ -32,5 +32,5 @@ function defaultControler (req, res) {
 
 module.exports = {
     main,
-    routes
+    register
 }
