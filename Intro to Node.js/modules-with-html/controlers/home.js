@@ -1,5 +1,5 @@
 const formidable = require('formidable');
-const { layout, getItems, addItem } = require('../util');
+const { layout, getItems, addItem, deleteItem } = require('../util');
 
 const homePage = `
     <h1>Home</h1>
@@ -21,7 +21,7 @@ const aboutPage = (data) => `
    <input type="submit" value="Submit"></input>
 </form>
 <ul>
-${data.map(x => `<li>${x.name} - ${x.contact}`).join('\n')}
+${data.map(x => `<li>${x.name} - ${x.contact} <a href="/delete?id=${x.id}">[&#10006 Delete]</a></li>`).join('\n')}
 </ul>
 `;
 
@@ -49,12 +49,20 @@ function createControler(req, res) {
         });
         res.end();
     });
+}
 
-
+function deleteController(req, res) {
+    const id = req.url.searchParams.get('id');
+    deleteItem(id);
+    res.writeHead(301, {
+        'Location': '/about'
+    });
+    res.end();
 }
 
 module.exports = {
     homeControler,
     aboutControler,
-    createControler
+    createControler,
+    deleteController
 }

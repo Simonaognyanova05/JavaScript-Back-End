@@ -32,6 +32,10 @@ function nextId(){
     return 'xxxxxxxx'.replace(/x/g, () => (Math.random() * 16 | 0).toString(16));
 } 
 
+function deleteItem(id){
+    delete data[id];
+}
+
 const data = {
     '234774d4': {
         name: "Test",
@@ -46,4 +50,5 @@ module.exports = {
     layout,
     addItem,
     getItems, 
+    deleteItem
 };
