@@ -1,5 +1,5 @@
 const formidable = require('formidable');
-const { layout, data } = require('../util');
+const { layout, getItems, addItem } = require('../util');
 
 const homePage = `
     <h1>Home</h1>
@@ -31,6 +31,7 @@ function homeControler(req, res) {
 }
 
 function aboutControler(req, res) {
+    const data = getItems();
     res.write(layout(aboutPage(data)));
     res.end();
 }
@@ -42,12 +43,7 @@ function createControler(req, res) {
     form.parse(req, (err, fields) => {
         console.log(fields);
 
-        const item = {
-            name: fields.name,
-            contact: fields.contact
-        }
-
-        data.push(item);
+        addItem(fields.name, fields.contact)
         res.writeHead(301, {
             'Location': '/about'
         });
