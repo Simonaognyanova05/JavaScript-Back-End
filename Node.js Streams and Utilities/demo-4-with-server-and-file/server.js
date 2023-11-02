@@ -4,8 +4,10 @@ const fs = require('fs');
 http.createServer((req, res) => {
     console.log('Request');
     if (req.method == 'GET') {
-        res.write('OK');
-        res.end();
+        fs.readFile('file.txt', (err, data) => {
+            res.write(data.toString());
+            res.end();
+        });
     } else if (req.method == 'POST') {
         let body = '';
         req.on('data', data => {
