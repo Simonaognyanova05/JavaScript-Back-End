@@ -1,12 +1,13 @@
 const http = require('http');
 const fs = require('fs');
 const { get, post, match } = require('./src/router');
+const { home } = require('./src/controllers/home');
+const { catalog } = require('./src/controllers/catalog');
 
 
-get('/', (req, res) => {
-    res.write('Hello');
-    res.end();
-})
+get('/', home);
+get('/catalog', catalog);
+
 http.createServer((req, res) => {
     if(req.url == '/favicon.ico'){
         fs.createReadStream(`./static/favicon.ico`).pipe(res);

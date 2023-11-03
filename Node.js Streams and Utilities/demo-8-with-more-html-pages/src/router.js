@@ -24,6 +24,13 @@ function match(req, res) {
     }
 
     if (typeof handler == 'function') {
+        res.html = page => {
+            res.writeHead(200, {
+                'content-type': 'text/html; charset=utf-8'
+            });
+            res.write(page);
+            res.end();
+        }
         handler(req, res);
     } else {
         defaultContoller(req, res);
