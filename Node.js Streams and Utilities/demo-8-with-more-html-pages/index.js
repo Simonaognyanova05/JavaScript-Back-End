@@ -1,17 +1,18 @@
 const http = require('http');
 const fs = require('fs');
+const { get, post, match } = require('./src/router');
 
+
+get('/', (req, res) => {
+    res.write('Hello');
+    res.end();
+})
 http.createServer((req, res) => {
-    const url = new URL(req.url, `http://${req.headers.host}`);
-
-    if(url.pathname == '/'){
-        res.writeHead(301, {
-            location: '/index.html',
-        })
-        res.end();
-    }else if(url.pathname.slice(-5) == '.html' || url.pathname.slice(-4) == '.css'){
-        fs.createReadStream(`./static${url.pathname}`).pipe(res);
-    } else if(url.pathname == '/favicon.ico'){
+    if(req.url == '/favicon.ico'){
         fs.createReadStream(`./static/favicon.ico`).pipe(res);
-    } 
+    }else if(req.url.startsWith('/public/')){
+        fs.createReadStream(`./static/${req.url.slice(8)}`).pipe(res);
+    }else{
+        match(req, res);
+    }
 }).listen(3000);
