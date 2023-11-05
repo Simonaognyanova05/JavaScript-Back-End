@@ -2,7 +2,6 @@ const http = require('http');
 const fs = require('fs');
 
 http.createServer((req, res) => {
-    console.log('Request');
     if (req.method == 'GET') {
        fs.createReadStream('index.html').pipe(res);
     } else if (req.method == 'POST') {
