@@ -16,6 +16,14 @@
     <p>Site is not visited</p>
     {{/if}}
 
+    <ul>
+        {{#each products}}
+        <li>Name: {{name}}, Price: {{price}}</li>
+        {{else}}
+        <p>There is no product</p>
+        {{/each}}
+    </ul>
+
 </body>
 
 </html>
