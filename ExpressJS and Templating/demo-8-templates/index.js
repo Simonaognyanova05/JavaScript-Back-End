@@ -19,8 +19,14 @@ const products = [
 app.get('/', (req, res) => {
     res.locals = {
         count: visitors++,
+    }
+    res.render('home');
+})
+
+app.get('/catalog', (req, res) => {
+    res.locals = {
         products
     }
-    res.render('home', { layout: false });
+    res.render('catalog');
 })
 app.listen(3001);

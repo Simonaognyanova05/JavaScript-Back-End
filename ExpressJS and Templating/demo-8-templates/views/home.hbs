@@ -1,29 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handlebars</title>
-</head>
-
-<body>
-    <h1>Hello, Handlebars</h1>
-    <p>Welcome to the site</p>
-    {{#if count}}
-    <p>Site visited {{count}} times</p>
-    {{else}}
-    <p>Site is not visited</p>
-    {{/if}}
-
-    <ul>
-        {{#each products}}
-        <li>Name: {{name}}, Price: {{price}}</li>
-        {{else}}
-        <p>There is no product</p>
-        {{/each}}
-    </ul>
-
-</body>
-
-</html>
+<h1>Hello, Handlebars</h1>
+<p>Welcome to the site</p>
+{{#if count}}
+<p>Site visited {{count}} times</p>
+{{else}}
+<p>Site is not visited</p>
+{{/if}}
