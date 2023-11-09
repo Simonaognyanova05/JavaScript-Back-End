@@ -11,7 +11,7 @@ app.set('view engine', '.hbs');
 let visitors = 0;
 
 const products = [
-    {name: "Product 1", price: 222},
+    {name: "Product 1", price: 222, promoted: true},
     {name: "Product 2", price: 345},
 
 ]
@@ -19,6 +19,10 @@ const products = [
 app.get('/', (req, res) => {
     res.locals = {
         count: visitors++,
+        user: {
+            username: 'Peter',
+            email: 'pe@abv.bg'
+        }
     }
     res.render('home');
 })
@@ -29,4 +33,4 @@ app.get('/catalog', (req, res) => {
     }
     res.render('catalog');
 })
-app.listen(3001);
+app.listen(3000);
