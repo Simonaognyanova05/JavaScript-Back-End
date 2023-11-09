@@ -1,5 +1,7 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const homeController = require('./src/home');
+const catalogRouter = require('./src/catalog');
 
 const app = express();
 
@@ -8,9 +10,8 @@ app.engine('.hbs', hbs.create({
 }).engine);
 
 app.set('view engine', '.hbs');
+app.use('/content', express.static('static'));
+app.get('/', homeController);
+app.use('/catalog', catalogRouter);
 
-app.get('/', (req, res) => {
-    res.render('home');
-})
-
-app.listen(3000);
+app.listen(3001);

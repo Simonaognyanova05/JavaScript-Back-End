@@ -1,0 +1,30 @@
+body{
+    background-color: bisque;
+}
+
+#content{
+    background-color: white;
+    width: 980px;
+    margin: auto;
+    padding: 32px;
+}
+
+nav li{
+    list-style: none;
+    display: inline-block;
+}
+
+nav a{
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    padding: 4px 8px;
+}
+
+nav a:hover{
+    background-color: cadetblue;
+}
+
+.italics{
+    font-style: italic;
+}
