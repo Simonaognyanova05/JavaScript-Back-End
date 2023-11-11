@@ -4,6 +4,7 @@ const homeController = require('./src/home');
 const healthITController = require('./src/healthIT');
 const outlookController = require('./src/outlook');
 const jobsController = require('./src/jobs');
+const moreInfoController = require('./src/moreInfo');
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.get('/', homeController);
 app.get('/healthIT', healthITController);
 app.get('/outlook', outlookController);
 app.get('/jobs', jobsController);
+app.get('/moreInfo', moreInfoController);
 
 app.listen(3001);
