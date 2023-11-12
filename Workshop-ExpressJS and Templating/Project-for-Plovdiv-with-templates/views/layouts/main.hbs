@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/content/style.css">
     <title>{{{title}}}</title>
 </head>
-<body {{{components}}}>
+<body>
+    <h1 class="page-title">{{{docTitle}}}</h1>
+
+    <hr width="100%" size="3" color="0F7837">
+
+    <table id="navigation">
+        <tr>
+            <td class="navigation"><a href="/" class="path">Начало</a></td>
+            <td class="navigation"><a href="/history" class="path">История</a></td>
+            <td class="navigation"><a href="/geography" class="path">География и местоположение</a></td>
+            <td class="navigation"><a href="/about" class="path">За нас</a></td>
+            <td class="navigation"><a href="/curiously" class="path">Любопитно</a></td>
+        </tr>
+    </table>
+
+    <hr width="100%" size="3" color="0F7837">
     {{{body}}}
 
-
-     <br><br>
-        <p style="background-color: black;"><br><br><font color="white">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Created by Simona Ognyanova</font><br><br><br></p>
+     <footer>
+        <p>Created By Simona Ognyanova</p>
+    </footer>
 </body>
 </html>
