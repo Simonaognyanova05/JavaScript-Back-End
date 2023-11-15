@@ -1,15 +1,17 @@
 const { MongoClient } = require('mongodb');
 
-const connectionString = 'mongodb://localhost:27017';
-const connection = new MongoClient(connectionString, {
-    useUnifiedTopology: true
-})
+const connectionString = 'mongodb://localhost:27017/';
+start();
 
-connection.connect((err, result) => {
-    if(err != null){
-        console.log('Database connection error');
-        process.exit(1);
-    }
+async function start(){
+    const connection = new MongoClient(connectionString, {
+        useUnifiedTopology: true
+    })
+    
+    await connection.connect();
+    console.log('Database connected');
 
-    console.log('Success')
-})
+    const db = connection.db('testdb');
+    const data = await db.collection('people').find({}).toArray();
+    console.log(data)
+}
