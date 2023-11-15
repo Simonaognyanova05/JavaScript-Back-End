@@ -10,6 +10,9 @@ const carShema = new mongoose.Schema({
 carShema.methods.startEngine = function(){
     console.log(`${this.name} - ${this.price}`);
 }
+carShema.virtual('VAT').get(function(){
+    return this.price * 0.2;
+})
 const Car = mongoose.model('Car', carShema);
 
 start();
@@ -29,4 +32,6 @@ async function start(){
     const data = await Car.find({});
     console.log(data);
     data.forEach(car => car.startEngine());
+    data.forEach(car => console.log(car.VAT));
+
 }
