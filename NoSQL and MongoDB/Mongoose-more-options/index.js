@@ -12,7 +12,7 @@ const carShema = new mongoose.Schema({
         //         return value >= 0;
         //     },
         //     message: 'Error'
-        // }
+        // } 
         min: [0, 'Price cannot be less than {VALUE}'],
     }
 })
