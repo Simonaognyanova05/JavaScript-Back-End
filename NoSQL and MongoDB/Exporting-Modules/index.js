@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Car = require('./models/Car');
 const connectionString = 'mongodb://localhost:27017/testdb';
 
-
-
 start();
 
 async function start() {
