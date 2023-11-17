@@ -13,10 +13,15 @@ async function start() {
         useNewUrlParser: true
     })
 
-    const comment = await Comment.findOne({});
-    const post = await Post.findOne({});
-    post.comments.push(comment);
+    //Add comment
+    // const comment = await Comment.findOne({});
+    // const post = await Post.findOne({});
+    // post.comments.push(comment);
 
-    await post.save();
+    // await post.save();
+
+    //Read post
+    const post = await Post.findOne({}).populate('comments', 'content');
+    console.log(post);
     
 }
