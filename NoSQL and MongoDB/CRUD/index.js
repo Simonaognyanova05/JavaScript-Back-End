@@ -46,11 +46,16 @@ async function start() {
     // const car = await Car.find({ price: { $lt: 3000 } });
     // console.log(car);
 
-    
+
     //Get data by condition (less than and bigger than or equal)
     // const car = await Car.find({ price: { $lte: 3000, $gte: 1000 } });
     // console.log(car);
 
     //Updating by Id
-    await Car.findByIdAndUpdate('65577588037a26234ac795bd', {price: 10000})
+    //await Car.findByIdAndUpdate('65577588037a26234ac795bd', {price: 10000});
+
+    //Count elements
+    console.log(await Car.countDocuments())
+    //Count elements by condition
+    console.log(await Car.countDocuments({ price: { $gt: 5000 } }))
 }
