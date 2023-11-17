@@ -29,4 +29,7 @@ async function start() {
     const dataById = await Car.findById('65577588037a26234ac795bd');
     console.log(dataById);
 
+    dataById.name = 'Shkoda';
+    await dataById.save();
+    console.log(dataById);
 }
