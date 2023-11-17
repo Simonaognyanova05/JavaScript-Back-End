@@ -1,34 +1,35 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/products';
+const connectionString = 'mongodb://localhost:27017/testdb';
+
+const catSchema = new mongoose.Schema({
+    name: String,
+    bread: String,
+    age: Number
+})
+
+const Cat = mongoose.model('Cat', catSchema);
 
 start();
 
-async function start() {
-    try {
-        await mongoose.connect(connectionString, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+async function start(){
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
 
-        console.log('Connected to MongoDB');
+    // try{
+    //     const cat = new Cat({
+    //         name: 'Darsy',
+    //         bread: 'Baby',
+    //         age: '0.5'
+    //     })
+    //     await cat.save();
+    // }catch(err){
+    //     console.log('Error')
+    // }
 
-        const carSchema = new mongoose.Schema({
-            name: String,
-            price: Number
-        });
-
-        const Car = mongoose.model('Car', carSchema);
-        const car = new Car({
-            name: 'Opel Mokka',
-            price: 2500
-        });
-
-        await car.save();
-
-        const data = await Car.find({});
-        console.log(data);
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
+    const data = await Cat.find({});
+    console.log(data);
 }
+
