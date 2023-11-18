@@ -24,7 +24,10 @@ async function start(){
     // const cat = await Cat.findOne({name: 'Lussy'});
     // console.log(cat);
 
-    const cat = await Cat.findByIdAndUpdate('6558e0aecbe44d0e43fee447');
-    cat.name = 'Lussy';
+    // const cat = await Cat.findByIdAndUpdate('6558e0aecbe44d0e43fee447');
+    // cat.name = 'Lussy';
+    // await cat.save();
+
+    const cat = await Cat.findByIdAndDelete('6558e0aecbe44d0e43fee447');
     await cat.save();
 }
