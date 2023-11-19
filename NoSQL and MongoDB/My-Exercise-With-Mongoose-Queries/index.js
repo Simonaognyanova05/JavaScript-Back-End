@@ -11,15 +11,15 @@ async function start(){
         useNewUrlParser: true
     })
 
-    // try{
-    //     const cat = new Cat({
-    //         name: 'Maxi',
-    //         age: 0.5,
-    //     });
-    //     await cat.save();
-    // }catch(err){
-    //     console.log('Error');
-    // }
+    try{
+        const cat = new Cat({
+            name: 'Maxi',
+            age: 0.5,
+        });
+        await cat.save();
+    }catch(err){
+        console.log('Error');
+    }
 
     // const cat = await Cat.findOne({name: 'Lussy'});
     // console.log(cat);
