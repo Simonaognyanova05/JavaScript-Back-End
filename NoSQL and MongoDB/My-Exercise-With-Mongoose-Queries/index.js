@@ -1,15 +1,31 @@
 const express = require('express');
-const hbs = require('express-handlebars');
-const homeController = require('./src/home');
+const mongoose = require('mongoose');
+const exphbs = require('express-handlebars');
 
 const app = express();
-app.engine('.hbs', hbs.create({
-    extname: '.hbs'
-}).engine);
+const port = 3000;
 
-app.set('view engine', '.hbs');
-app.get('/', homeController);
+mongoose.connect('mongodb://localhost:27017/testdb', { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.listen(3000);
+const Cat = mongoose.model('Cat', {
+  name: String,
+  age: Number
+});
 
+// Промени в начина на инициализация на Handlebars
+app.engine('hbs', exphbs.create({ extname: '.hbs' }).engine);
+app.set('view engine', 'hbs');
 
+app.get('/', async (req, res) => {
+  try {
+    const cats = await Cat.findOne({}).select('name');
+    res.render('home', { title: 'Cat from MongoDb',name: cats.name });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
