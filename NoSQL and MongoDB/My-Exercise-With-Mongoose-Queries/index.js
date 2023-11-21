@@ -15,8 +15,8 @@ app.engine('.hbs', handlebars.create({ extname: '.hbs'}).engine);
 app.set('view engine', '.hbs');
 app.get('/', async (req, res) => {
     try{
-        const cat = await Cat.findOne({}).select('name');
-        res.render('home', {title: 'Cats with MongoDB', name: cat.name});
+        const cats = await Cat.findOne({});
+        res.render('home', {title: 'Cats with MongoDB', cats: cats });
     }catch(err){
         console.log('Error');
     }

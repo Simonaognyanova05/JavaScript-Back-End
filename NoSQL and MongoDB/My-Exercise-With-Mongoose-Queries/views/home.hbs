@@ -7,8 +7,10 @@
 </head>
 <body>
   <h1>Cats from MongoDB</h1>
-  <ul>
-      <li>First cat is {{name}}</li>
-  </ul>
+    <ul>
+      {{#each cats}}
+        <li>The cat is {{this.name}}</li>
+      {{/each}}
+    </ul>
 </body>
 </html>
