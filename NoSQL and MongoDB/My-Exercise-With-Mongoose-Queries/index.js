@@ -7,7 +7,8 @@ const connectionString = 'mongodb://localhost:27017/testdb';
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
 const catSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    age: Number,
+    img: String
 })
 const Cat = mongoose.model('Cat', catSchema);
 
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', async (req, res) => {
     try{
         const cats = await Cat.findOne({});
-        res.render('home', {title: 'Cats with MongoDB', cats: cats });
+        res.render('home', {title: 'Cats with MongoDB', name: cats.name, img: cats.img });
     }catch(err){
         console.log('Error');
     }
@@ -27,8 +28,8 @@ app.get('/create', (req, res) => {
 })
 app.post('/create', async (req, res) => {
     try {
-        const { name, age } = req.body;
-        const newCat = new Cat({ name, age });
+        const { name, age, img } = req.body;
+        const newCat = new Cat({ name, age, img });
         await newCat.save();
         res.redirect('/');
       } catch (err) {
