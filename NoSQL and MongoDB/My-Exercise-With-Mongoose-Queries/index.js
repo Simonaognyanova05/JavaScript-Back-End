@@ -17,8 +17,8 @@ app.set('view engine', '.hbs');
 app.use(express.urlencoded({ extended: true }));
 app.get('/', async (req, res) => {
     try{
-        const cats = await Cat.findOne({});
-        res.render('home', {title: 'Cats with MongoDB', name: cats.name, img: cats.img });
+        const cats = await Cat.find({});
+        res.render('home', {title: 'Cats with MongoDB', cats });
     }catch(err){
         console.log('Error');
     }
