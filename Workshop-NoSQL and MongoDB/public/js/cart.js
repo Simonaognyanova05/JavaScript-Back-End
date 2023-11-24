@@ -14,7 +14,7 @@ function tableHTML(i){
        <td>${products[i].price}</td>
     </tr>
     `
-}
+} 
 
 function clean(){
     localStorage.clear();
