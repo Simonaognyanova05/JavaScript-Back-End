@@ -4,7 +4,6 @@ const app = express();
 
 let visited = 0;
 
-//something
 app.get('/', (req, res) => {
     if(req.headers.cookie){
         console.log('Cookie ' + req.headers.cookie);
