@@ -6,7 +6,7 @@ let visited = 0;
 
 app.get('/', (req, res) => {
     if(req.headers.cookie){
-        console.log('Cookie ' + req.headers.cookie);
+        console.log('>>> ' + req.headers.cookie);
         visited = Number(req.headers.cookie.split('=')[1]);
         visited++;
     }
