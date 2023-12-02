@@ -7,10 +7,12 @@ let visited = 0;
 app.get('/', (req, res) => {
     if(req.headers.cookie){
         console.log('>>> ' + req.headers.cookie);
-        visited = Number(req.headers.cookie.split('=')[1]);
-        visited++;
+        // visited = Number(req.headers.cookie.split('=')[1]);
+        // visited++;
     }
     res.setHeader('Set-Cookie', `visited=${visited}; httpOnly`);
+    res.setHeader('Set-Cookie', `theme=dark`);
+
     res.send(`<p>Hello</p><p>You have visited ${visited} times</p>`)
 })
 app.listen(3000);
