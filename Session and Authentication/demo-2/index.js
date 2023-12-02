@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
         .reduce((a, [k, v]) => Object.assign(a, { [k]: v }), {});
 
     console.log(cookies.sessionId);
-    if (cookies.sessionId == undefined) {
+    if (cookies.sessionId == undefined || cookies.sessionId != id) {
         let newId = ('000000' + (Math.random() * 999999).toString(16)).slice(-6);
         id = newId;
         res.setHeader('Set-Cookie', `sessionId=${newId}; httpOnly`);
         visited = 1;
-    } else if (cookies.sessionId == id) {
+    } else {
         visited++;
     }
     res.send(`<p>Hello</p><p>You have visited ${visited} times</p>`)
