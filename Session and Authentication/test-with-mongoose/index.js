@@ -1,6 +1,6 @@
 const express = require('express');
 const expressSession = require('express-session');
-const requests = require('./requests/req')
+const requests = require('./requests/req');
 
 const app = express();
 
@@ -17,35 +17,38 @@ app.get('/', (req, res) => {
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     </head>
     <body>
-        <p>Hello, ${req.session.user ? req.session.user.username : 'Annonymous'}</p>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+    <p>Hello, ${req.session.user ? req.session.user.username : 'There'}</p>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/delete">Delete</a>
+
     </body>
     </html>
-    `);
-});
-
+    `)
+})
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/login.html');
-});
-
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/register.html');
-});
-
-app.post('/register', async(req, res) => {
-    await requests.register(req, res);
 });
 
 app.post('/login', async (req, res) => {
     await requests.login(req, res);
 });
+app.get('/register', (req, res) => {
+    res.sendFile(__dirname + '/register.html');
+});
+app.post('/register', async (req, res) => {
+    await requests.register(req, res);
+});
+app.get('/delete', (req, res) => {
+    res.sendFile(__dirname + '/delete.html');
+});
+app.post('/delete', async (req, res) => {
+    await requests.remove(req, res);
 
-
-
+});
 app.listen(3000);

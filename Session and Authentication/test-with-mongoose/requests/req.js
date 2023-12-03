@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const connectionString = 'mongodb://localhost:27017/testdb';
 
-async function login(req, res) {
+async function login(req, res){
     const { username, password } = req.body;
 
     await mongoose.connect(connectionString, {
@@ -11,38 +11,57 @@ async function login(req, res) {
         useNewUrlParser: true
     });
 
-    try {
+    try{
         const user = await User.findOne({ username });
 
-        if (user && user.password === password) {
+        if(user && password == user.password){
             req.session.user = user;
             res.redirect('/');
-        } else {
-            console.log('Invalid data');
+        }else{
+            res.send('Invalid Data!');
         }
-    } catch (err) {
-        console.log('Error:', err);
+    }catch(err){
+        res.send('Error');
     }
 }
 
-async function register(req, res) {
+async function register(req, res){
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+    
+    const { username, password } = req.body;
+    try{
+        const user = new User({
+            username,
+            password
+        })
+
+        await user.save();
+        res.redirect('/');
+    }catch(err){
+        res.send('Error')
+    }
+}
+async function remove(req, res){
     await mongoose.connect(connectionString, {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });
 
-    try {
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password,
-        });
+    const username = req.body.username;
 
-        await user.save();
+    const userForDel = await User.deleteOne({ username });
+
+    if(userForDel.deletedCount > 0){
+        console.log('Success');
         res.redirect('/');
-    } catch (err) {
-        console.log('Error:', err);
-        res.status(500).send('Error registering user.');
+        return true;
+    }else{
+        console.log('Invalid user');
+
+        return false;
     }
 }
-
-module.exports = { login, register };
+module.exports = { login, register, remove };
