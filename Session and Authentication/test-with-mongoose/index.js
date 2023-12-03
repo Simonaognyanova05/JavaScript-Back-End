@@ -26,6 +26,8 @@ app.get('/', (req, res) => {
     <a href="/login">Login</a>
     <a href="/register">Register</a>
     <a href="/delete">Delete</a>
+    <a href="/update">Update</a>
+
 
     </body>
     </html>
@@ -49,6 +51,11 @@ app.get('/delete', (req, res) => {
 });
 app.post('/delete', async (req, res) => {
     await requests.remove(req, res);
-
+});
+app.get('/update', (req, res) => {
+    res.sendFile(__dirname + '/update.html');
+});
+app.post('/update', async (req, res) => {
+    await requests.update(req, res);
 });
 app.listen(3000);

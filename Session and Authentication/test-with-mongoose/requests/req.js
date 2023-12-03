@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const connectionString = 'mongodb://localhost:27017/testdb';
 
-async function login(req, res){
+async function login(req, res) {
     const { username, password } = req.body;
 
     await mongoose.connect(connectionString, {
@@ -11,28 +11,28 @@ async function login(req, res){
         useNewUrlParser: true
     });
 
-    try{
+    try {
         const user = await User.findOne({ username });
 
-        if(user && password == user.password){
+        if (user && password == user.password) {
             req.session.user = user;
             res.redirect('/');
-        }else{
+        } else {
             res.send('Invalid Data!');
         }
-    }catch(err){
+    } catch (err) {
         res.send('Error');
     }
 }
 
-async function register(req, res){
+async function register(req, res) {
     await mongoose.connect(connectionString, {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });
-    
+
     const { username, password } = req.body;
-    try{
+    try {
         const user = new User({
             username,
             password
@@ -40,11 +40,25 @@ async function register(req, res){
 
         await user.save();
         res.redirect('/');
-    }catch(err){
+    } catch (err) {
         res.send('Error')
     }
 }
-async function remove(req, res){
+async function remove(req, res) {
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+
+    const username = req.body.username
+    try{
+        await User.deleteOne({ username });
+        res.redirect('/');
+    }catch(err){
+        console.log('Error');
+    }
+}
+async function update(req, res) {
     await mongoose.connect(connectionString, {
         useUnifiedTopology: true,
         useNewUrlParser: true
@@ -52,16 +66,13 @@ async function remove(req, res){
 
     const username = req.body.username;
 
-    const userForDel = await User.deleteOne({ username });
-
-    if(userForDel.deletedCount > 0){
-        console.log('Success');
+    const newData = {username: req.body.changename, password: req.body.changepass };
+    try{
+        await User.updateOne({username}, {$set: newData});
         res.redirect('/');
-        return true;
-    }else{
-        console.log('Invalid user');
-
-        return false;
+    }catch(err){
+        console.log('Error');
     }
+    
 }
-module.exports = { login, register, remove };
+module.exports = { login, register, remove, update };
