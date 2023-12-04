@@ -10,7 +10,7 @@ app.use(expressSession({
     saveUninitialized: true,
     cookie: { secure: 'auto' }
 }));
-app.use(auth);
+app.use(auth());
 
 app.get('/', (req, res) => {
     console.log(req.session.user);
