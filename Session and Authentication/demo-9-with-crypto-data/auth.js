@@ -43,7 +43,7 @@ module.exports = () => {
                 users[id] = user;
 
                 console.log('New user: ' + username);
-                
+                req.session.user = user;
                 return true;
             }
         }
