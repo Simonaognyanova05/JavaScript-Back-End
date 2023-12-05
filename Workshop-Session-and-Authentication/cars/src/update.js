@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-    res.render('update');
+    res.render('update', {
+        title: 'Update page'
+    });
 }

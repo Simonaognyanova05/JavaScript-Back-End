@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-    res.render('create');
+    res.render('create', {
+        title: 'Create page'
+    });
 }
