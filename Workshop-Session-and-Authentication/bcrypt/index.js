@@ -1,11 +1,17 @@
 const bcrypt = require('bcrypt');
 
-const pass1 = '12345';
+const pass1 = '123456';
 
-async function start(){
-
+async function crypting() {
     const hash = await bcrypt.hash(pass1, 10);
-    console.log(hash);
+    return hash
+}
+
+async function start() {
+    const cryptingFunc = await crypting();
+    //console.log(cryptingFunc);
+    const compared = await bcrypt.compare(pass1, cryptingFunc);
+    console.log(compared);
 }
 
 start();
