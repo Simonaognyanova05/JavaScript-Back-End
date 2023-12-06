@@ -25,5 +25,4 @@ async function create(req, res){
         res.send('Error');
     }
 }
-
 module.exports = {create}
