@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Car = require('../models/Car');
 
 const connectionString = 'mongodb://localhost:27017/cars';
 
@@ -8,14 +9,6 @@ async function homePage(req, res){
         useNewUrlParser: true
     });
 
-    const carSchema = new mongoose.Schema({
-        model: String,
-        brand: String,
-        year: Number,
-        price: Number
-    })
-
-    const Car = mongoose.model('Car', carSchema);
 
     const car = await Car.find({});
     res.send(`
