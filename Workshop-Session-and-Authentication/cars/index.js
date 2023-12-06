@@ -9,7 +9,7 @@ const app = express();
 app.engine('.hbs', hbs.create({
     extname: '.hbs'
 }).engine);
-
+app.use('/static', express.static('static'))
 app.set('view engine', '.hbs');
 app.get('/', homeController);
 app.get('/create', createController);

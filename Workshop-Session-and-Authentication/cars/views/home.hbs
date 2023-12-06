@@ -1,6 +1,18 @@
-<h1>Home page</h1>
-<h2>This is site for cars</h2>
+<section class="header">
+    <h1>Home page</h1>
+    <h2>This is site for cars</h2>
+</section>
 
-{{#each cars}}
-<p>{{{this.brand}}}</p>
-{{/each}}
+
+<div class="card-container">
+    {{#each cars}}
+    <div class="card" style="width: 18rem;">
+        <img src={{{this.img}}} class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{{this.brand}}}</h5>
+            <p class="card-text">{{{this.model}}}, {{{this.year}}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
