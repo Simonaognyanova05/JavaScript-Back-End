@@ -1,8 +1,9 @@
 const express = require('express');
 const { homePage } = require('./src/home');
 const { createPage } = require('./src/create');
-const { createData, updateData } = require('./src/postRequest/post');
+const { createData, updateData, deleteData } = require('./src/postRequest/post');
 const {updatePage} = require('./src/update');
+const { deletePage } = require('./src/delete');
 
 
 const app = express();
@@ -26,4 +27,12 @@ app.get('/update/:carId', (req, res) => {
 app.post('/update/:carId', async (req, res) => {
     await updateData(req, res);
 })
+
+app.get('/delete/:carId', (req, res) => {
+    deletePage(req, res);
+});
+
+app.delete('/delete/:carId', async (req, res) => {
+    await deleteData(req, res);
+});
 app.listen(3000);

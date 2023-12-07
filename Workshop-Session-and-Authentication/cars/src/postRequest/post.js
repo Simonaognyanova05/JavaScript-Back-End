@@ -41,5 +41,23 @@ async function updateData(req, res) {
         mongoose.disconnect();
     }
 }
+async function deleteData(req, res) {
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
 
-module.exports = { createData, updateData }
+    const carId = req.params.carId;
+
+    try {
+        await Car.findByIdAndDelete(carId);
+        res.redirect('/');
+    } catch (err) {
+        console.log(err);
+    } finally {
+        mongoose.disconnect();
+    }
+}
+
+
+module.exports = { createData, updateData, deleteData}

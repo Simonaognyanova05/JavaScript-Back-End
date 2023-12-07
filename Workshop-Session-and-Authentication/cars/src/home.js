@@ -63,7 +63,7 @@ async function homePage(req, res){
               <p class="card-text">${car.price} лв.</p>
 
               <a href="/update/${car._id.toString()}" class="btn btn-primary">Update</a>
-              <a href="/delete" class="btn btn-primary">Delete</a>
+              <a href="/delete/${car._id.toString()}" class="btn btn-primary">Delete</a>
 
             </div>
           </div>
