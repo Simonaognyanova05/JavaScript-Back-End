@@ -3,23 +3,43 @@ const Car = require('../../models/Car');
 
 const connectionString = 'mongodb://localhost:27017/cars';
 
-async function createData(req, res){
+async function createData(req, res) {
     await mongoose.connect(connectionString, {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });
 
 
-    const {brand, model, year, price, img} = req.body;
-    try{
+    const { brand, model, year, price, img } = req.body;
+    try {
         const car = new Car({
             brand, model, year, price, img
         })
         await car.save();
         res.redirect('/')
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }
 
-module.exports = {createData}
+async function updateData(req, res) {
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+
+    const { newbrand, newmodel, newyear, newprice, newimg } = req.body;
+    const carId = req.params.carId;
+    const newData = { brand: newbrand, model: newmodel, year: newyear, price: newprice, img: newimg };
+
+    try {
+        await Car.updateOne({ _id: carId }, { $set: newData });
+        res.redirect('/');
+    } catch (err) {
+        console.log(err);
+    } finally {
+        mongoose.disconnect();
+    }
+}
+
+module.exports = { createData, updateData }

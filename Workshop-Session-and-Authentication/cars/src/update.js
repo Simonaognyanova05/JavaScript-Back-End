@@ -1,4 +1,5 @@
 function updatePage(req, res){
+    const carId = req.params.carId;
     res.send(`
     <!DOCTYPE html>
 <html lang="en">
@@ -41,15 +42,7 @@ function updatePage(req, res){
     </section>
 
     <section class="create-form">
-        <form class="row g-3" action="/create" method="POST">
-            <div class="col-md-6">
-                <label for="brand" class="form-label">Old brand</label>
-                <input type="text" class="form-control" id="brand" name="brand">
-            </div>
-            <div class="col-md-6">
-                <label for="model" class="form-label">Old model</label>
-                <input type="text" class="form-control" id="model" name="model">
-            </div>
+        <form class="row g-3" action="/update/${carId}" method="POST">
             <div class="col-md-6">
                 <label for="newbrand" class="form-label">New brand</label>
                 <input type="text" class="form-control" id="newbrand" name="newbrand">

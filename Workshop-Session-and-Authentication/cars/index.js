@@ -19,7 +19,11 @@ app.get('/create', (req, res) => {
 app.post('/create', async (req, res) => {
     await createData(req, res);
 })
-app.get('/update', (req, res) => {
+app.get('/update/:carId', (req, res) => {
     updatePage(req, res);
+})
+
+app.post('/update/:carId', async (req, res) => {
+    await updateData(req, res);
 })
 app.listen(3000);
