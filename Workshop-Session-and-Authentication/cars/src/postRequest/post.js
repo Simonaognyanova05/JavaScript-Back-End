@@ -10,10 +10,10 @@ async function createData(req, res){
     });
 
 
-    const {brand, model, year, price} = req.body;
+    const {brand, model, year, price, img} = req.body;
     try{
         const car = new Car({
-            brand, model, year, price
+            brand, model, year, price, img
         })
         await car.save();
         res.redirect('/')

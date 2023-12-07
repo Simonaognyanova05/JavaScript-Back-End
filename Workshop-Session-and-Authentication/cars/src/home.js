@@ -39,10 +39,10 @@ async function homePage(req, res){
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./create.html">Create car</a>
+                <a class="nav-link" href="/create">Create car</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./update.html">Update car</a>
