@@ -9,6 +9,10 @@
 .card{
     margin: 30px;
 }
+.create-form{
+    padding: 30px;
+    width: 1000px;
+}
 footer{
     background-color: black;
     text-align: center;
