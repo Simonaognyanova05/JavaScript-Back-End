@@ -1,7 +1,9 @@
 const express = require('express');
 const { homePage } = require('./src/home');
 const { createPage } = require('./src/create');
-const { createData } = require('./src/postRequest/post');
+const { createData, updateData } = require('./src/postRequest/post');
+const {updatePage} = require('./src/update');
+
 
 const app = express();
 
@@ -11,10 +13,13 @@ app.use('/content', express.static('static'))
 app.get('/', async (req, res) => {
     await homePage(req, res);
 })
-app.get('/create', async (req, res) => {
-    await createPage(req, res);
+app.get('/create', (req, res) => {
+    createPage(req, res);
 })
 app.post('/create', async (req, res) => {
     await createData(req, res);
+})
+app.get('/update', (req, res) => {
+    updatePage(req, res);
 })
 app.listen(3000);

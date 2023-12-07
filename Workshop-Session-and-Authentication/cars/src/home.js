@@ -44,12 +44,6 @@ async function homePage(req, res){
               <li class="nav-item">
                 <a class="nav-link" href="/create">Create car</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./update.html">Update car</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./delete.html">Delete car</a>
-              </li>
             </ul>
           </div>
         </div>
@@ -68,7 +62,9 @@ async function homePage(req, res){
               <p class="card-text">${car.year} г.</p>
               <p class="card-text">${car.price} лв.</p>
 
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="/update" class="btn btn-primary">Update</a>
+              <a href="/delete" class="btn btn-primary">Delete</a>
+
             </div>
           </div>
     `) : '<h2 class="anycars">No cars</h2>'}
