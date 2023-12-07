@@ -6,6 +6,7 @@ const { createData } = require('./src/postRequest/post');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+
 app.get('/', async (req, res) => {
     await homePage(req, res);
 })
