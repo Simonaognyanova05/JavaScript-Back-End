@@ -1,0 +1,27 @@
+.header{
+    text-align: center;
+    padding-top: 30px;
+}
+.anycars{
+    text-align: center;
+}
+.container{
+    display: flex;
+    padding: 30px;
+}
+.card{
+    margin: 30px;
+}
+.create-form{
+    padding: 30px;
+    width: 1000px;
+}
+footer{
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding-bottom: 0%;
+}
+footer p{
+    padding: 30px;
+}

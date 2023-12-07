@@ -10,28 +10,75 @@ async function homePage(req, res){
     });
 
 
-    const car = await Car.find({});
+    const cars = await Car.find({});
     res.send(`
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cars | Home page</title>
-    </head>
-    <body>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/create">Create car</a></li>
-        <li><a href="/update">Update car</a></li>
-        <li><a href="/delete">Delete car</a></li>
-    </ul>
-    <h1>Home page</h1>
-    <p>This is home page</p>
-    <ul>
-        ${car.map(x => `<li>${x.brand} - ${x.model} - ${x.year} - ${x.price}</li>`)}
-    </ul>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/content/style.css">
+
+    <title>Car | Home page</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">The Car's Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./create.html">Create car</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./update.html">Update car</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./delete.html">Delete car</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <section class="header">
+        <h1>Home page</h1>
+    </section>
+
+    <div class="container">
+    ${cars.length > 0 ? cars.map(car => `
+    <div class="card" style="width: 18rem;">
+            <img src=${car.img} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${car.brand}</h5>
+              <p class="card-text">${car.model}</p>
+              <p class="card-text">${car.year} г.</p>
+              <p class="card-text">${car.price} лв.</p>
+
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    `) : '<h2 class="anycars">No cars</h2>'}
+    </div>
+
+    <footer>
+        <p>Copyright 2023 Created By Simona Ognyanova</p>
+    </footer>
 </body>
+
 </html>
     `)
 }

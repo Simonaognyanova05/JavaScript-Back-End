@@ -7,6 +7,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/content', express.static('static'))
 app.get('/', async (req, res) => {
     await homePage(req, res);
 })
