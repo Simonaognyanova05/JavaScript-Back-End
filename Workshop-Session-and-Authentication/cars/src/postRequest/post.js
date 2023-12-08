@@ -81,6 +81,7 @@ async function register(req, res) {
         });
 
         await user.save();
+        req.session.user = user;
         res.redirect('/');
     }catch(err){
         alert("Error");
