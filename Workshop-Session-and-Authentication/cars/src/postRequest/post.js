@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const Car = require('../../models/Car');
 
 const connectionString = 'mongodb://localhost:27017/cars';
@@ -74,14 +75,14 @@ async function register(req, res) {
     const userSchema = new mongoose.Schema({
         username: {type: String, required: true},
         email: {type: String, required: true},
-        password: {type: String, required: true},
+        hashedPassword: {type: String, required: true},
     });
 
     const User = mongoose.model('User', userSchema);
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     try{
         const user = new User({
-            username, email, password
+            username, email, hashedPassword
         });
 
         await user.save();
