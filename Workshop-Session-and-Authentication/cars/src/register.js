@@ -46,7 +46,7 @@ function registerPage(req, res){
 </section>
 
 <section class="create-form">
-  <form class="row g-3" action="/login" method="POST">
+  <form class="row g-3" action="/register" method="POST">
       <div class="col-md-6">
           <label for="username" class="form-label">Username</label>
           <input type="text" class="form-control" id="username" name="username">

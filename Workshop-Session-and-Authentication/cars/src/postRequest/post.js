@@ -58,6 +58,38 @@ async function deleteData(req, res) {
         mongoose.disconnect();
     }
 }
+async function register(req, res) {
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+
+    const {username, email, password, repass} = req.body;
+
+    if(password != repass){
+        res.send('Passwords do not match')
+        return;
+    }
+
+    const userSchema = new mongoose.Schema({
+        username: {type: String, required: true},
+        email: {type: String, required: true},
+        password: {type: String, required: true},
+    });
+
+    const User = mongoose.model('User', userSchema);
+
+    try{
+        const user = new User({
+            username, email, password
+        });
+
+        await user.save();
+        res.redirect('/');
+    }catch(err){
+        alert("Error");
+    }
+}
 
 
-module.exports = { createData, updateData, deleteData}
+module.exports = { createData, updateData, deleteData, register}
