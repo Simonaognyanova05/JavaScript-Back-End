@@ -10,7 +10,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/style.css">
-    <title>Cars | Create page</title>
+    <title>Cars | Login page</title>
 </head>
 
 <body>
@@ -24,16 +24,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/create">Create car</a>
+                        <a class="nav-link" href="./create.html">Create car</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/update">Update car</a>
+                        <a class="nav-link" href="./update.html">Update car</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/delete">Delete car</a>
+                        <a class="nav-link" href="./delete.html">Delete car</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./login.html">Login</a>
@@ -43,38 +43,23 @@
         </div>
     </nav>
     <section class="header">
-        <h1>Update page</h1>
-        <p>This is update page</p>
+        <h1>Login page</h1>
+        <p>This is login page</p>
     </section>
 
     <section class="create-form">
-        <form class="row g-3" action="/create" method="POST">
+        <form class="row g-3" action="/login" method="POST">
             <div class="col-md-6">
-                <label for="brand" class="form-label">Old brand</label>
-                <input type="text" class="form-control" id="brand" name="brand">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="col-md-6">
-                <label for="model" class="form-label">Old model</label>
-                <input type="text" class="form-control" id="model" name="model">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
             </div>
-            <div class="col-md-6">
-                <label for="newbrand" class="form-label">New brand</label>
-                <input type="text" class="form-control" id="newbrand" name="newbrand">
-            </div>
-            <div class="col-md-6">
-                <label for="newmodel" class="form-label">New model</label>
-                <input type="text" class="form-control" id="newmodel" name="newmodel">
-            </div>
-            <div class="col-md-6">
-                <label for="newyear" class="form-label">New year</label>
-                <input type="text" class="form-control" id="newyear" name="newyear">
-            </div>
-            <div class="col-md-6">
-                <label for="newprice" class="form-label">New price</label>
-                <input type="text" class="form-control" id="newprice" name="newprice">
-            </div>
+
             <div class="col-12">
-                <input type="submit" class="btn btn-primary" value="Update">
+                <input type="submit" class="btn btn-primary" value="Login">
             </div>
         </form>
     </section>
