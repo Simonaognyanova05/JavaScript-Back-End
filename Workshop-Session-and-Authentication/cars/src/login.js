@@ -27,18 +27,20 @@ function loginPage(req, res){
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/create">Create car</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
+          ${req.session.user ? ` <li class="nav-item">
+          <a class="nav-link" href="/create">Create car</a>
+        </li>` : `<li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="/register">Register</a>
+    </li>`}
+          
         </ul>
       </div>
     </div>
+<p class="rightpos">${req.session.user ? req.session.user.username : ``}</p>
+
   </nav>
         <section class="header">
             <h1>Login page</h1>

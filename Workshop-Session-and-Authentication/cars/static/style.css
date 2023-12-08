@@ -16,6 +16,10 @@
     padding: 30px;
     width: 1000px;
 }
+.rightpos{
+    text-align: right;
+    padding-right: 30px;
+}
 footer{
     background-color: black;
     text-align: center;
