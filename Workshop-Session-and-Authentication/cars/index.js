@@ -47,6 +47,9 @@ app.delete('/delete/:carId', async (req, res) => {
 app.get('/login', (req, res) => {
     loginPage(req, res);
 });
+app.post('/login', async (req, res) => {
+    await requests.login(req, res);
+});
 app.get('/register', (req, res) => {
     registerPage(req, res);
 });

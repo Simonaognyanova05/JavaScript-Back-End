@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Car = require('../../models/Car');
+const User = require('../../models/User');
 
 const connectionString = 'mongodb://localhost:27017/cars';
 
@@ -72,13 +73,7 @@ async function register(req, res) {
         return;
     }
 
-    const userSchema = new mongoose.Schema({
-        username: {type: String, required: true},
-        email: {type: String, required: true},
-        hashedPassword: {type: String, required: true},
-    });
-
-    const User = mongoose.model('User', userSchema);
+ 
     const hashedPassword = await bcrypt.hash(password, 10);
     try{
         const user = new User({
@@ -92,5 +87,25 @@ async function register(req, res) {
     }
 }
 
+async function login(req, res) {
+    await mongoose.connect(connectionString, {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
 
-module.exports = { createData, updateData, deleteData, register}
+    const {username, password} = req.body;
+    try{
+        const user = await User.findOne({ username });
+        const compared = await bcrypt.compare(password, user.hashedPassword);
+        if(user && compared){
+            req.session.user = user;
+            res.redirect('/');
+        }else{
+            res.send('Error');
+        }
+    }catch(err){
+        res.send("Error");
+    }
+}
+
+module.exports = { createData, updateData, deleteData, register, login }
