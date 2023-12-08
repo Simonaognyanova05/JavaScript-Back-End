@@ -5,6 +5,7 @@ const { createData, updateData, deleteData } = require('./src/postRequest/post')
 const {updatePage} = require('./src/update');
 const { deletePage } = require('./src/delete');
 const { loginPage } = require('./src/login');
+const { registerPage } = require('./src/register');
 
 
 const app = express();
@@ -39,5 +40,7 @@ app.delete('/delete/:carId', async (req, res) => {
 app.get('/login', (req, res) => {
     loginPage(req, res);
 });
-
+app.get('/register', (req, res) => {
+    registerPage(req, res);
+});
 app.listen(3000);

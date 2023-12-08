@@ -1,4 +1,4 @@
-function loginPage(req, res){
+function registerPage(req, res){
     res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -40,28 +40,35 @@ function loginPage(req, res){
       </div>
     </div>
   </nav>
-        <section class="header">
-            <h1>Login page</h1>
-            <p>This is login page</p>
-        </section>
-    
-        <section class="create-form">
-            <form class="row g-3" action="/login" method="POST">
-                <div class="col-md-6">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-    
-                <div class="col-12">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
-            </form>
-        </section>
-    
+  <section class="header">
+  <h1>Register page</h1>
+  <p>This is register page</p>
+</section>
+
+<section class="create-form">
+  <form class="row g-3" action="/login" method="POST">
+      <div class="col-md-6">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email">
+      </div>
+      <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="col-md-6">
+          <label for="repass" class="form-label">Repeat password</label>
+          <input type="password" class="form-control" id="repass" name="repass">
+      </div>
+
+      <div class="col-12">
+          <input type="submit" class="btn btn-primary" value="Login">
+      </div>
+  </form>
+</section>
         <footer>
             <p>Copyright 2023 Created By Simona Ognyanova</p>
         </footer>
@@ -71,4 +78,4 @@ function loginPage(req, res){
     `)
 }
 
-module.exports = {loginPage}
+module.exports = {registerPage}
