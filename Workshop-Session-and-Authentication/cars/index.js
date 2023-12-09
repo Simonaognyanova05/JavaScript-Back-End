@@ -7,6 +7,7 @@ const {updatePage} = require('./src/update');
 const { deletePage } = require('./src/delete');
 const { loginPage } = require('./src/login');
 const { registerPage } = require('./src/register');
+const { logoutPage } = require('./src/logout');
 
 
 const app = express();
@@ -55,5 +56,8 @@ app.get('/register', (req, res) => {
 });
 app.post('/register', async (req, res) => {
     await requests.register(req, res);
+});
+app.get('/logout', (req, res) => {
+    logoutPage(req, res);
 });
 app.listen(3000);

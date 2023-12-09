@@ -43,7 +43,11 @@ async function homePage(req, res){
       </li>
       ${req.session.user ? ` <li class="nav-item">
       <a class="nav-link" href="/create">Create car</a>
-    </li>` : `<li class="nav-item">
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Logout</a>
+    </li>
+    ` : `<li class="nav-item">
     <a class="nav-link" href="/login">Login</a>
   </li>
   <li class="nav-item">
