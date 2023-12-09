@@ -13,9 +13,10 @@ async function createData(req, res) {
 
 
     const { brand, model, year, price, img } = req.body;
+    const ownerId = req.session.user._id.toString();
     try {
         const car = new Car({
-            brand, model, year, price, img
+            brand, model, year, price, img, ownerId
         })
         await car.save();
         res.redirect('/')

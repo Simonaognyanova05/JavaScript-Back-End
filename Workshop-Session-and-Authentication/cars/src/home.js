@@ -70,8 +70,11 @@ async function homePage(req, res){
               <p class="card-text">${car.year} г.</p>
               <p class="card-text">${car.price} лв.</p>
 
+              ${req.session.user ? req.session.user._id.toString() === car.ownerId ? `
               <a href="/update/${car._id.toString()}" class="btn btn-primary">Update</a>
               <a href="/delete/${car._id.toString()}" class="btn btn-primary">Delete</a>
+              ` : '' : ''}
+              
 
             </div>
           </div>
