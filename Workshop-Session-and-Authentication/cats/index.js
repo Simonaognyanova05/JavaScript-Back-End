@@ -3,7 +3,10 @@ const expressSession = require('express-session');
 const hbs = require('express-handlebars');
 const homeController = require('./src/home');
 const registerController = require('./src/register');
+const loginController = require('./src/login');
+
 const {register} = require('./requests/registerReq');
+const {login} = require('./requests/loginReq');
 
 
 const app = express();
@@ -26,5 +29,8 @@ app.get('/register', registerController);
 app.post('/register', async(req, res) => {
     await register(req, res);
 });
-
+app.get('/login', loginController);
+app.post('/login', async(req, res) => {
+    await login(req, res);
+});
 app.listen(3000);

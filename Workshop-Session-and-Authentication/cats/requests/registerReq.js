@@ -22,6 +22,7 @@ async function register(req, res){
             username, email, hashPass
         })
         await user.save();
+        req.session.user = user;
         res.redirect('/');
     }catch(err){
         res.send('Error');
