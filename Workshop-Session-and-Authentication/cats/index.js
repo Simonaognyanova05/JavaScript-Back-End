@@ -4,6 +4,8 @@ const hbs = require('express-handlebars');
 const homeController = require('./src/home');
 const registerController = require('./src/register');
 const loginController = require('./src/login');
+const createController = require('./src/create');
+
 
 const {register} = require('./requests/registerReq');
 const {login} = require('./requests/loginReq');
@@ -33,4 +35,7 @@ app.get('/login', loginController);
 app.post('/login', async(req, res) => {
     await login(req, res);
 });
+
+app.get('/create', createController);
+
 app.listen(3000);

@@ -22,6 +22,12 @@
     padding: 50px;
     padding-bottom: 300px;
 }
+.create{
+    width: 600px;
+    height: 50px;
+    padding: 50px;
+    padding-bottom: 250px;
+}
 footer{
     text-align: center;
     background-color: black;
