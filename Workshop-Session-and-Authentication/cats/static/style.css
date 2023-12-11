@@ -11,10 +11,16 @@
     margin: 30px;
 }
 .login{
-    width: 500px;
+    width: 600px;
     height: 50px;
     padding: 50px;
     padding-bottom: 200px;
+}
+.register{
+    width: 600px;
+    height: 50px;
+    padding: 50px;
+    padding-bottom: 300px;
 }
 footer{
     text-align: center;
