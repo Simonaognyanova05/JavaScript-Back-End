@@ -7,12 +7,13 @@ const homeController = require('./src/home');
 const registerController = require('./src/register');
 const loginController = require('./src/login');
 const createController = require('./src/create');
-
+const updateController = require('./src/update');
 
 const { register } = require('./requests/registerReq');
 const { login } = require('./requests/loginReq');
 const { create } = require('./requests/createReq');
 const { logout } = require('./src/logout');
+const { update } = require('./requests/updateReq');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -48,5 +49,9 @@ app.post('/create', async (req, res) => {
 app.get('/logout', (req, res) => {
     logout(req, res);
 });
+app.get('/update/:catId', updateController);
+app.post('/update/:catId', async (req, res) => {
+    await update(req, res);
+})
 
 app.listen(3000);
