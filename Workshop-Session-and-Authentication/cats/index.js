@@ -14,6 +14,8 @@ const { login } = require('./requests/loginReq');
 const { create } = require('./requests/createReq');
 const { logout } = require('./src/logout');
 const { update } = require('./requests/updateReq');
+const { remove } = require('./requests/deleteReq');
+const { deletePage } = require('./src/deletePage');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -52,6 +54,12 @@ app.get('/logout', (req, res) => {
 app.get('/update/:catId', updateController);
 app.post('/update/:catId', async (req, res) => {
     await update(req, res);
+});
+app.get('/delete/:carId', (req, res) => {
+    deletePage(req, res);
+});
+app.delete('/delete/:catId', async (req, res) => {
+    await remove(req, res);
 })
 
 app.listen(3000);
