@@ -1,5 +1,6 @@
 module.exports = (req, res) => {
     res.render('create', {
-        title: 'Create page'
+        title: 'Create page',
+        user: req.session.user
     });
 }
