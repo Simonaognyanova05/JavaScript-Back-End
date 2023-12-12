@@ -7,8 +7,9 @@ const loginController = require('./src/login');
 const createController = require('./src/create');
 
 
-const {register} = require('./requests/registerReq');
-const {login} = require('./requests/loginReq');
+const { register } = require('./requests/registerReq');
+const { login } = require('./requests/loginReq');
+const { create } = require('./requests/createReq');
 
 
 const app = express();
@@ -28,14 +29,17 @@ app.set('view engine', '.hbs');
 app.use('/content', express.static('static'));
 app.get('/', homeController);
 app.get('/register', registerController);
-app.post('/register', async(req, res) => {
+app.post('/register', async (req, res) => {
     await register(req, res);
 });
 app.get('/login', loginController);
-app.post('/login', async(req, res) => {
+app.post('/login', async (req, res) => {
     await login(req, res);
 });
 
 app.get('/create', createController);
+app.post('/create', async (req, res) => {
+    await create(req, res);
+});
 
 app.listen(3000);
