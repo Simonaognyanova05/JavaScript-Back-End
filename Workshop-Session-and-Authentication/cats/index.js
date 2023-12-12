@@ -1,6 +1,8 @@
 const express = require('express');
 const expressSession = require('express-session');
 const hbs = require('express-handlebars');
+const handlebars = require('handlebars');
+const helpers = require('handlebars-helpers')();
 const homeController = require('./src/home');
 const registerController = require('./src/register');
 const loginController = require('./src/login');
@@ -12,7 +14,6 @@ const { login } = require('./requests/loginReq');
 const { create } = require('./requests/createReq');
 const { logout } = require('./src/logout');
 
-
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSession({
@@ -22,6 +23,7 @@ app.use(expressSession({
     cookie: { secure: 'auto' }
 }));
 
+handlebars.registerHelper(helpers);
 app.engine('.hbs', hbs.create({
     extname: '.hbs'
 }).engine);

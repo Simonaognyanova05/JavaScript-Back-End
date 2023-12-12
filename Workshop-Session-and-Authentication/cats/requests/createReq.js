@@ -10,10 +10,10 @@ async function create(req, res) {
     });
 
     const { name, age, bread, img } = req.body;
-
+    const ownerId = req.session.user._id;
     try {
         const cat = new Cat({
-            name, age, bread, img
+            name, age, bread, img, ownerId
         })
         await cat.save();
         res.redirect('/');
