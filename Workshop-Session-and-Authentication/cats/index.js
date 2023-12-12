@@ -10,6 +10,7 @@ const createController = require('./src/create');
 const { register } = require('./requests/registerReq');
 const { login } = require('./requests/loginReq');
 const { create } = require('./requests/createReq');
+const { logout } = require('./src/logout');
 
 
 const app = express();
@@ -40,6 +41,10 @@ app.post('/login', async (req, res) => {
 app.get('/create', createController);
 app.post('/create', async (req, res) => {
     await create(req, res);
+});
+
+app.get('/logout', (req, res) => {
+    logout(req, res);
 });
 
 app.listen(3000);
