@@ -13,8 +13,8 @@ async function login(req, res){
     const { username, password } = req.body;
 
     try{
-        const comparedPass = await bcrypt.compare(password, req.user.hashPass);
         const user = await User.findOne({ username });
+        const comparedPass = await bcrypt.compare(password, user.hashPass);
         if(user && comparedPass){
             req.session.user = user;
             res.redirect('/');
