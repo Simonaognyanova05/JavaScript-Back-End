@@ -16,6 +16,7 @@ const { logout } = require('./src/logout');
 const { update } = require('./requests/updateReq');
 const { remove } = require('./requests/deleteReq');
 const { deletePage } = require('./src/deletePage');
+const catalog = require('./src/catalog');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -61,5 +62,8 @@ app.get('/delete/:carId', (req, res) => {
 app.delete('/delete/:catId', async (req, res) => {
     await remove(req, res);
 })
+app.get('/catalog', async (req, res) => {
+    await catalog(req, res)
+});
 
 app.listen(3000);

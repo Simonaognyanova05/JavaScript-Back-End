@@ -1,0 +1,21 @@
+<h1 class="hometitle">This is house of cats</h1>
+<h2 class="hometitle">Cats are cool</h2>
+
+<div class="container">
+    {{#each cats}}
+    <div class="card" style="width: 18rem;">
+        <img src={{this.img}} class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">{{this.age}}</p>
+            <p class="card-text">{{this.bread}}</p>
+
+            <a href="/update/{{this._id}}" class="btn btn-primary">Update</a>
+            <a href="/delete/{{this._id}}" class="btn btn-primary">Delete</a>
+         
+        </div>
+    </div>
+    {{else}}
+    <p>No cat</p>
+    {{/each}}
+</div>
