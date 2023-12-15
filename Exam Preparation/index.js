@@ -3,7 +3,8 @@ const expressSession = require('express-session');
 const hbs = require('express-handlebars');
 const homeController = require('./src/home');
 const healthITController = require('./src/healthIT');
-
+const outlookController = require('./src/outlook');
+const jobsController = require('./src/jobs');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ app.use('/content', express.static('static'));
 
 app.get('/', homeController);
 app.get('/healthIT', healthITController);
-
+app.get('/outlook', outlookController);
+app.get('/jobs', jobsController);
 
 app.listen(3000);
