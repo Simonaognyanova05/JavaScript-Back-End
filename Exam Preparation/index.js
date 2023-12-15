@@ -2,6 +2,8 @@ const express = require('express');
 const expressSession = require('express-session');
 const hbs = require('express-handlebars');
 const homeController = require('./src/home');
+const healthITController = require('./src/healthIT');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -20,5 +22,7 @@ app.set('view engine', '.hbs');
 app.use('/content', express.static('static'));
 
 app.get('/', homeController);
+app.get('/healthIT', healthITController);
+
 
 app.listen(3000);
