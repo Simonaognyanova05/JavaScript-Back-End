@@ -1,0 +1,52 @@
+  <div class="forms">
+        <h1>Вашето мнение</h1>
+    </div>
+
+    <div class="reservation-form">
+        <h2>Анкета за потребители</h2>
+        <h3>Споделете мнението си с нас</h3>
+        <form>
+          <div class="form-group">
+            <label for="name">Три имена:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="mnenie">Вашето мнение:</label>
+            <textarea name="mnenie" id="" cols="53" rows="10"></textarea>
+          </div>
+          <div class="form-group">
+            Не съм робот:<input type="checkbox" id="radio" name="radio" required><br>
+            Подкрепям:<input type="radio" id="radio" name="radio" required>
+            Не подкрепям:
+            <input type="radio" id="radio" name="radio" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="jobs">Коя професия бихте избрали?</label>
+            <select name="jobs" id="jobs">
+                <option value="Informatics-Specialist">Специалист по клинична информатика</option>
+                <option value="Data-Scientist">Учен по данни в здравеопазването</option>
+                <option value="Information-Manager">Мениджър здравна информация</option>
+                <option value="Clinical-Informatics">Директор по клинична информатика</option>
+                <option value="no-job">Не бих работил това</option>
+              </select>
+    
+          </div>
+
+          <div class="form-group">
+            <label for="image">Прикачете файл, който да добавим в сайта ни</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            
+          </div>
+          <div class="form-group">
+
+            <button type="submit">Изпрати</button>
+            <button type="reset">Изчисти</button>
+
+          </div>
+        </form>
+      </div>
