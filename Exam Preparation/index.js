@@ -3,6 +3,10 @@ const expressSession = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require('path');
 
+const userHome = require('./src/user/home');
+
+const adminHome = require('./src/admin/home');
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSession({
@@ -16,11 +20,7 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.render('user/home', { title: 'User Home Page' });
-});
+app.get('/', userHome);
 
-app.get('/admin', (req, res) => {
-    res.render('admin/home', { title: 'Admin Home Page' });
-});
+app.get('/admin', adminHome);
 app.listen(3000);
