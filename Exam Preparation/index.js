@@ -1,13 +1,7 @@
 const express = require('express');
 const expressSession = require('express-session');
-const hbs = require('express-handlebars');
-const path = express('path');
-const homeController = require('./src/home');
-const healthITController = require('./src/healthIT');
-const outlookController = require('./src/outlook');
-const jobsController = require('./src/jobs');
-const moreInfoController = require('./src/moreInfo');
-const adminHome = require('./src/admin/admin');
+const exphbs = require('express-handlebars');
+const path = require('path');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -17,21 +11,16 @@ app.use(expressSession({
     saveUninitialized: true,
     cookie: { secure: 'auto' }
 }));
+const hbs = exphbs.create({ extname: 'hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, 'views/layouts/') });
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.engine('.hbs', hbs.create({
-    extname: '.hbs'
-}).engine);
+app.get('/', (req, res) => {
+    res.render('user/home', { title: 'User Home Page' });
+});
 
-app.set('view engine', '.hbs');
-app.use('/content', express.static('static'));
-
-app.get('/', homeController);
-app.get('/healthIT', healthITController);
-app.get('/outlook', outlookController);
-app.get('/jobs', jobsController);
-app.get('/moreInfo', moreInfoController);
-
-app.get('/admin/index', adminHome);
-
-
+app.get('/admin', (req, res) => {
+    res.render('admin/home', { title: 'Admin Home Page' });
+});
 app.listen(3000);
