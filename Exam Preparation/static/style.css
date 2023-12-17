@@ -34,7 +34,9 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
 }
-
+.adminTit{
+    color: #EFEC48;
+}
 .col:hover {
     font-size: 30px;
     color: #EFCD25;
