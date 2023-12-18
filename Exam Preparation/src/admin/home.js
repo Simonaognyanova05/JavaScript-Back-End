@@ -1,3 +1,11 @@
 module.exports = (req, res) => {
-    res.render('admin/home', { title: 'Admin Home Page', admin: req.session.admin });
+    const admin = req.session.admin;
+
+    if(admin){
+
+        res.render('admin/home', { title: 'Admin Home Page', admin: admin });
+    }else{
+        res.render('admin/login', { title: 'Login Page' });
+
+    }
 };

@@ -11,6 +11,7 @@ const adminRegister = require('./src/admin/register');
 const adminLogin = require('./src/admin/login');
 
 const { register } = require('./src/admin/requests/register');
+const { login } = require('./src/admin/requests/login');
 
 
 
@@ -37,6 +38,8 @@ app.post('/admin/register', async (req, res) => {
     await register(req, res);
 });
 app.get('/admin/login', adminLogin);
-
+app.post('/admin/login', async (req, res) => {
+    await login(req, res);
+});
 
 app.listen(3000);
