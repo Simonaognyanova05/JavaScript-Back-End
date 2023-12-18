@@ -8,7 +8,10 @@ const userCatalog = require('./src/user/catalog');
 
 const adminHome = require('./src/admin/home');
 const adminRegister = require('./src/admin/register');
+const adminLogin = require('./src/admin/login');
+
 const { register } = require('./src/admin/requests/register');
+
 
 
 const app = express();
@@ -33,6 +36,7 @@ app.get('/admin/register', adminRegister);
 app.post('/admin/register', async (req, res) => {
     await register(req, res);
 });
+app.get('/admin/login', adminLogin);
 
 
 app.listen(3000);
