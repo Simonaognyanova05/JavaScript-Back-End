@@ -7,6 +7,8 @@ const userHome = require('./src/user/home');
 const userCatalog = require('./src/user/catalog');
 
 const adminHome = require('./src/admin/home');
+const adminRegister = require('./src/admin/register');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -26,4 +28,6 @@ app.get('/', userHome);
 app.get('/catalog', userCatalog);
 
 app.get('/admin', adminHome);
+app.get('/admin/register', adminRegister);
+
 app.listen(3000);
