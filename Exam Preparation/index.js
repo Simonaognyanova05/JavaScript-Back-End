@@ -13,7 +13,7 @@ const adminCreate = require('./src/admin/create');
 
 const { register } = require('./src/admin/requests/register');
 const { login } = require('./src/admin/requests/login');
-
+const { create } = require('./src/admin/requests/create');
 
 
 const app = express();
@@ -43,5 +43,7 @@ app.post('/admin/login', async (req, res) => {
     await login(req, res);
 });
 app.get('/admin/create', adminCreate);
-
+app.post('/admin/create', async (req, res) => {
+    await create(req, res);
+});
 app.listen(3000);
