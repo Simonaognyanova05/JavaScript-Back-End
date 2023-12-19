@@ -19,6 +19,7 @@ const { register } = require('./src/admin/requests/register');
 const { login } = require('./src/admin/requests/login');
 const { create } = require('./src/admin/requests/create');
 const { remove } = require('./src/admin/requests/delete');
+const {update} = require('./src/admin/requests/update');
 
 
 
@@ -60,4 +61,7 @@ app.delete('/admin/delete/:carId', async (req, res) => {
     await remove(req, res);
 });
 app.get('/admin/update/:carId', adminUpdate);
+app.post('/admin/update/:carId', async (req, res) => {
+    await update(req, res);
+});
 app.listen(3000);
