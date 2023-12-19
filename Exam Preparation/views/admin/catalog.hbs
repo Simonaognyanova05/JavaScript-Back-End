@@ -1,0 +1,17 @@
+<section class="cards">
+{{#each cars}}
+    <div class="card" style="width: 18rem;">
+        <img src="{{this.img}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{this.brand}} - {{this.model}}</h5>
+            <p class="card-text">{{this.year}}</p>
+            <p class="card-text">{{this.price}}</p>
+             <a href="#" class="btn btn-primary">Update</a>
+             <a href="#" class="btn btn-primary">Delete</a>
+
+        </div>
+    </div>
+{{else}}
+<p>No cars</p>
+{{/each}}
+</section>

@@ -1,3 +1,4 @@
 module.exports = (req, res) => {
-    res.render('admin/create', { title: 'Create Page' });
+    const admin = req.session.admin;
+    res.render('admin/create', { title: 'Create Page', admin: admin});
 };
