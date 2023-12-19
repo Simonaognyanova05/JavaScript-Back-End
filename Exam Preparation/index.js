@@ -11,6 +11,8 @@ const adminRegister = require('./src/admin/register');
 const adminLogin = require('./src/admin/login');
 const adminCreate = require('./src/admin/create');
 const adminCatalog = require('./src/admin/catalog');
+const adminUpdate = require('./src/admin/update');
+
 const { deletePage } = require('./src/admin/delete');
 
 const { register } = require('./src/admin/requests/register');
@@ -57,4 +59,5 @@ app.get('/admin/delete/:carId', (req, res) => {
 app.delete('/admin/delete/:carId', async (req, res) => {
     await remove(req, res);
 });
+app.get('/admin/update/:carId', adminUpdate);
 app.listen(3000);
