@@ -11,10 +11,13 @@ const adminRegister = require('./src/admin/register');
 const adminLogin = require('./src/admin/login');
 const adminCreate = require('./src/admin/create');
 const adminCatalog = require('./src/admin/catalog');
+const { deletePage } = require('./src/admin/delete');
 
 const { register } = require('./src/admin/requests/register');
 const { login } = require('./src/admin/requests/login');
 const { create } = require('./src/admin/requests/create');
+const { remove } = require('./src/admin/requests/delete');
+
 
 
 const app = express();
@@ -48,5 +51,10 @@ app.post('/admin/create', async (req, res) => {
     await create(req, res);
 });
 app.get('/admin/catalog', adminCatalog);
-
+app.get('/admin/delete/:carId', (req, res) => {
+    deletePage(req, res);
+});
+app.delete('/admin/delete/:carId', async (req, res) => {
+    await remove(req, res);
+});
 app.listen(3000);
