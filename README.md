@@ -1,2 +1,2 @@
-This is course for JavaScript Bak-End.
+This is course for JavaScript Back-End.
 Тechnologies - MongoDb, Handlebars, Bcrypt, Express.
